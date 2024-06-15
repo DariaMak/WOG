@@ -8,6 +8,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 80
 
+ENV APP_HOME /myapp
+
 COPY Scores.txt /Scores.txt
 
 CMD ["python", "main.py"]
