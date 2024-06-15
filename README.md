@@ -135,3 +135,30 @@ the Scores.txt function..
 Upload the project (as public) to GitHub and send me the link.
 These game modules have been meticulously designed to provide an engaging and challenging
 experience. Feel free to explore and enjoy the diverse gameplay offered by the World of Games!
+
+e2e.py
+This file will have two functions.
+Functions
+1. test_scores_service - it’s purpose is to test our web service. It will get the application
+URL as an input, open a browser to that URL, select the score element in our web page,
+check that it is a number between 1 to 1000 and return a boolean value if it’s true or not.
+2. main_function to call our tests function. The main function will return -1 as an OS exit
+code if the tests failed and 0 if they passed.
+Dockerfile
+The Dockerfile will package our flask project and run it as a command (set it in the CMD block).
+The Dockerfile will also package inside it the Scores.txt file at: /Scores.txt .
+Docker-compose.yml
+This file will be used to manage our application. It will be used to build the application, run it and
+push to docker hub.
+Jenkinsfile
+This will consist the jenkins pipeline that we do the following stages:
+1. Checkout - checkout the repository.
+2. Build - Build our docker image.
+3. Run - will run our dockerized application. The application will expose the port 8777 on
+localhost, and a dummy Scores.txt will be mounted to it in order to server the results for
+the tests.
+4. Test - With our e2e.py file it will selenium test our scores web service and fail the
+pipeline if the tests failed.
+5. Finalize - Will terminate our tested container and push to DockerHub the new image we
+created.
+
