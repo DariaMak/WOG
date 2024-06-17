@@ -41,22 +41,22 @@ def start_play():
         counter += 1
 
     while True:
-        choice = input(f"Please select your game from the options [by number 1-3]: \n{options}")
-        if choice.isdigit() and 1 <= int(choice) <= 3:
-            choice = int(choice)
-            break
-        else:
-            print("Invalid input. Please enter a number between 1 and 3.")
+        while True:
+            choice = input(f"Please select your game from the options [by number 1-3]: \n{options}")
+            if choice.isdigit() and 1 <= int(choice) <= 3:
+                choice = int(choice)
+                break
+            else:
+                print("Invalid input. Please enter a number between 1 and 3.")
 
-    while True:
-        level = input(f"Please select your game level between 1-5 [1=low to 5=high]: \n")
-        if level.isdigit() and 1 <= int(level) <= 5:
-            level = int(level)
-            break
-        else:
-            print("Invalid input. Please enter a number between 1 and 5.")
-    
-    while True:
+        while True:
+            level = input(f"Please select your game level between 1-5 [1=low to 5=high]: \n")
+            if level.isdigit() and 1 <= int(level) <= 5:
+                level = int(level)
+                break
+            else:
+                print("Invalid input. Please enter a number between 1 and 5.")
+        
         if choice == 1:
             game_result(memory_play(level),level)
         elif choice == 2:
