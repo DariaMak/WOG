@@ -19,6 +19,17 @@ def game_result(result,level):
         print('Sorry you lose')
 
 
+def play_again():
+    while True:
+        play_again_input = input('Do you want to play another round? (yes/no): ')
+        if play_again_input.lower() == 'yes':
+            return True
+        elif play_again_input.lower() == 'no':
+            return False
+        else:
+            print("Invalid input. Please enter 'yes' or 'no'.")
+
+
 def start_play():
     games = {"Memory Game": "a sequence of numbers will appear for 1 second and you have to guess it back.",
              "Guess Game": "guess a number and see if you chose like the computer.",
@@ -44,13 +55,15 @@ def start_play():
             break
         else:
             print("Invalid input. Please enter a number between 1 and 5.")
+    
+    while True:
+        if choice == 1:
+            game_result(memory_play(level),level)
+        elif choice == 2:
+            game_result(guess_play(level),level)
+        elif choice == 3:
+            game_result(currency_roulette_play(level),level)
 
-    if choice == 1:
-        game_result(memory_play(level),level)
-    elif choice == 2:
-        game_result(guess_play(level),level)
-    elif choice == 3:
-        game_result(currency_roulette_play(level),level)
+        if not play_again():
+            break
     return
-
-
