@@ -13,6 +13,9 @@ COPY e2e.py/ /app/
 COPY utils.py /app/
 COPY requirements.txt /app/
 
+COPY Dockerfile /app/
+COPY Docker-compose.yml /app/
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 80
