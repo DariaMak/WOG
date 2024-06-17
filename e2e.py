@@ -12,21 +12,17 @@ def test_scores_service(URL: str):
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'score')))
         score_element = driver.find_element(By.ID,'score')
         score = int(score_element.text)
-        return 1 <= score <=1000
+        assert 1 <= score <= 1000, f"Score {score} is out of range [1, 1000]"
     except Exception as e:
         print(f"An error occurred: {e}")
-        return False
+        assert False, f"Test failed due to error: {e}"
     # finally:
         # driver.quit()
     
 
 def main_function():
     URL = "http://192.168.1.129:80"
-    result = test_scores_service(URL)
-    if result:
-        return -1
-    else:
-        return 0
+    test_scores_service(URL)
 
 
 main_function()
